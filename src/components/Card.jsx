@@ -1,17 +1,31 @@
 import React from "react";
 
+import suitEnum from "../enums/suit";
+
 import "./Card.css";
 
-const CardComp = ({ card }) => {
+const Card = ({ card, faceUp }) => {
+    const getColor = () => {
+        if (!card) return "";
+        if (card.suit === suitEnum.heart || card.suit === suitEnum.diamond)
+            return "red";
+        else if (card.suit === suitEnum.club || card.suit === suitEnum.spade)
+            return "black";
+        else return "";
+    };
     return (
-        <div className={`Card ${card.getColor()}`}>
-            <div className="card-proportion-wrapper">
-                <div className="rank-top">{card.rank}</div>
-                <div className="suit">{card.suit}</div>
-                <div className="rank-bottom">{card.rank}</div>
-            </div>
+        <div className={`Card ${getColor()}`}>
+            {faceUp ? (
+                <>
+                    <div className="rank-top">{card.rank}</div>
+                    <div className="suit">{card.suit}</div>
+                    <div className="rank-bottom">{card.rank}</div>
+                </>
+            ) : (
+                <div className="card-back" />
+            )}
         </div>
     );
 };
 
-export default CardComp;
+export default Card;

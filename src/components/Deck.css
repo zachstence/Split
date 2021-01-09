@@ -1,0 +1,9 @@
+.Deck {
+    display: flex;
+    flex-direction: row;
+    margin: 1em;
+}
+
+.Deck .draw-pile {
+    margin-right: 1em;
+}

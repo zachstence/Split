@@ -3,36 +3,26 @@ import { connect } from "react-redux";
 
 import "./App.css";
 
-import Hand from "./components/Hand";
+import Deck from "./components/Deck";
+import Player from "./components/Player";
 
 import { setup } from "./redux/actionCreators";
 
-const NUM_PLAYERS = 2;
+const NUM_PLAYERS = 4;
 
 const App = ({ players, setup }) => {
     useEffect(() => {
-        setup();
+        setup(NUM_PLAYERS);
     }, []);
-
-    const renderPlayer = (i) => {
-        const player = players[i];
-        return (
-            <>
-                <button type="button" onClick={() => player.draw()}>
-                    Draw
-                </button>
-                <button type="button" onClick={() => player.discard(0)}>
-                    Discard
-                </button>
-                <Hand playerNum={i} cards={player.hand} />
-                <br />
-            </>
-        );
-    };
 
     if (players) {
         return (
-            <div className="App">{players.map((p, i) => renderPlayer(i))}</div>
+            <div className="App">
+                <Deck />
+                {players.map((p, i) => (
+                    <Player index={i} />
+                ))}
+            </div>
         );
     } else return <div>Loading game...</div>;
 };

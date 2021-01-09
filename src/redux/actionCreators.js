@@ -1,12 +1,7 @@
 import rankEnum from "../enums/rank";
 import suitEnum from "../enums/suit";
 
-export const setup = () => {
-    const players = Array(2);
-    for (let i = 0; i < 2; i++) {
-        players[i] = { hand: [], pairs: [] };
-    }
-
+export const setup = (numPlayers) => {
     // create deck with cards
     const deck = [];
     Object.values(rankEnum).forEach((rank) => {
@@ -25,8 +20,14 @@ export const setup = () => {
         deck[j] = x;
     }
 
+    // create players, each dealt 9 cards from deck
+    const players = Array(numPlayers);
+    for (let i = 0; i < players.length; i++) {
+        players[i] = { hand: deck.splice(deck.length - 9, 9), pairs: [] };
+    }
+
     // discard top card in deck for game start
-    const discarded = deck.pop();
+    const discarded = [deck.pop()];
 
     return {
         type: "SETUP",

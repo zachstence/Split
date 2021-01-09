@@ -1,21 +1,24 @@
 .Card {
+    position: relative;
     width: 5vw;
+    height: calc(5vw * 1.4);
+    border: 1px solid black;
+    border-radius: 8%;
+    overflow: hidden;
+}
+
+.Card .card-back {
+    background-color: lightgreen;
+    height: 100%;
+    width: 100%;
 }
 
 .Card.red {
     color: red;
 }
 
-.Card-black {
+.Card.black {
     color: black;
-}
-
-.Card .card-proportion-wrapper {
-    position: relative;
-    height: 0;
-    padding-bottom: 140%;
-    border: 1px solid black;
-    border-radius: 5%;
 }
 
 .Card .rank-top {

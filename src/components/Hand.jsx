@@ -3,10 +3,10 @@ import Card from "./Card";
 
 import "./Hand.css";
 
-const Hand = ({ playerNum, cards }) => {
+const Hand = ({ playerNum, cards, faceUp }) => {
     const renderCards = () => {
         return cards.map((card) => {
-            return <Card card={card} />;
+            return <Card card={card} faceUp={faceUp} />;
         });
     };
     return (
