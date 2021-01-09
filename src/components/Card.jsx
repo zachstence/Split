@@ -3,8 +3,13 @@ import React from "react";
 import "./Card.css";
 
 const Card = ({ rank, suit }) => {
+    const getColor = () => {
+        if (suit === "Heart" || suit === "Diamond") return "red";
+        else return "black";
+    };
+
     return (
-        <div className="Card">
+        <div className={`Card ${getColor()}`}>
             <div className="card-proportion-wrapper">
                 <div className="rank-top">{rank}</div>
                 <div className="suit">{suit}</div>

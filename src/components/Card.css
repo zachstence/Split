@@ -2,6 +2,14 @@
     width: 20vw;
 }
 
+.Card.red {
+    color: red;
+}
+
+.Card-black {
+    color: black;
+}
+
 .Card .card-proportion-wrapper {
     position: relative;
     height: 0;
