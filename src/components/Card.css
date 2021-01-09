@@ -1,0 +1,29 @@
+.Card {
+    width: 20vw;
+}
+
+.Card .card-proportion-wrapper {
+    position: relative;
+    height: 0;
+    padding-bottom: 140%;
+    border: 1px solid black;
+    border-radius: 5%;
+}
+
+.Card .rank-top {
+    position: absolute;
+    left: 5%;
+    top: 5%;
+}
+
+.Card .rank-bottom {
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+}
+
+.Card .suit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
