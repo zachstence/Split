@@ -4,7 +4,7 @@ import Card from "./components/Card";
 import Game from "./game/Game";
 
 const App = () => {
-    const game = new Game();
+    const game = new Game(2);
     game.setup();
 
     return (
