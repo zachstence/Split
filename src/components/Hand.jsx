@@ -3,15 +3,20 @@ import Card from "./Card";
 
 import "./Hand.css";
 
-const Hand = ({ playerNum, cards, faceUp }) => {
+const Hand = ({ cards, faceUp }) => {
     const renderCards = () => {
         return cards.map((card) => {
-            return <Card card={card} faceUp={faceUp} />;
+            return (
+                <Card
+                    key={`${card.rank}${card.suit}`}
+                    card={card}
+                    faceUp={faceUp}
+                />
+            );
         });
     };
     return (
         <div className="Hand">
-            <div className="playerNum">Player {playerNum}</div>
             <div className="cards">{renderCards()}</div>
         </div>
     );

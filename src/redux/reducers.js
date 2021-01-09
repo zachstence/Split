@@ -5,7 +5,9 @@ const deck = (deck = [], action) => {
         case "SETUP":
             return action.payload.deck;
         case "DRAW_DECK":
-            return deck.pop();
+            const newDeck = [...deck];
+            newDeck.pop();
+            return newDeck;
         default:
             return deck;
     }
@@ -31,6 +33,13 @@ const players = (players = [], action) => {
     switch (action.type) {
         case "SETUP":
             return action.payload.players;
+        case "TAKE_CARDS":
+            const playersCopy = [...players];
+            playersCopy[action.payload.player].hand = [
+                ...playersCopy[action.payload.player].hand,
+                ...action.payload.cards,
+            ];
+            return playersCopy;
         default:
             return players;
     }

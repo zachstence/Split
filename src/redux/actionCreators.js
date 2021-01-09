@@ -34,3 +34,22 @@ export const setup = (numPlayers) => {
         payload: { deck, discarded, players },
     };
 };
+
+export const drawFromDeck = (player) => (dispatch, getState) => {
+    const deck = getState().deck;
+    const toDraw = deck[deck.length - 1];
+    dispatch({
+        type: "DRAW_DECK",
+    });
+    dispatch({
+        type: "TAKE_CARDS",
+        payload: {
+            player,
+            cards: [toDraw],
+        },
+    });
+};
+
+const drawFromDiscarded = (numCards) => {};
+
+const discard = (player, card) => {};
