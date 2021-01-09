@@ -2,11 +2,10 @@ import rankEnum from "../enums/rank";
 import suitEnum from "../enums/suit";
 import Card from "./Card";
 
-class Deck {
+class DrawDeck {
     constructor() {
         this.generateDeck();
         this.shuffleDeck();
-        console.log(this.deck);
     }
 
     generateDeck = () => {
@@ -31,6 +30,10 @@ class Deck {
             this.deck[j] = x;
         }
     };
+
+    draw = () => {
+        return this.deck.pop();
+    };
 }
 
-export default Deck;
+export default DrawDeck;

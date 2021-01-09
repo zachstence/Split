@@ -1,10 +1,11 @@
 import "./App.css";
 
 import Card from "./components/Card";
-import Deck from "./game/Deck";
+import Game from "./game/Game";
 
 const App = () => {
-    const deck = new Deck();
+    const game = new Game();
+    game.setup();
 
     return (
         <div className="App">
