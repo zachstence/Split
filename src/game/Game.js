@@ -48,7 +48,7 @@ class Game {
     };
 
     discard = (card) => {
-        this.discard.push(card);
+        this.discarded.push(card);
     };
 }
 
