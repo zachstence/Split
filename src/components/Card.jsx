@@ -1,22 +1,19 @@
 import React from "react";
 
+import Card from "../game/Card";
+
 import "./Card.css";
 
-const Card = ({ rank, suit }) => {
-    const getColor = () => {
-        if (suit === "Heart" || suit === "Diamond") return "red";
-        else return "black";
-    };
-
+const CardComp = ({ card }) => {
     return (
-        <div className={`Card ${getColor()}`}>
+        <div className={`Card ${card.getColor()}`}>
             <div className="card-proportion-wrapper">
-                <div className="rank-top">{rank}</div>
-                <div className="suit">{suit}</div>
-                <div className="rank-bottom">{rank}</div>
+                <div className="rank-top">{card.rank}</div>
+                <div className="suit">{card.suit}</div>
+                <div className="rank-bottom">{card.rank}</div>
             </div>
         </div>
     );
 };
 
-export default Card;
+export default CardComp;

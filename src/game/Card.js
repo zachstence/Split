@@ -5,7 +5,7 @@ class Card {
     }
 
     getColor = () => {
-        if (this.suit === "Heart" || this.suit === "Diamond") return "red";
+        if (this.suit === "♥" || this.suit === "♦") return "red";
         else return "black";
     };
 }

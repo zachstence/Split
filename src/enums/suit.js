@@ -1,8 +1,8 @@
 const suit = {
-    heart: "Heart",
-    diamond: "Diamond",
-    club: "Club",
-    spade: "Spade",
+    heart: "♥",
+    diamond: "♦",
+    club: "♣",
+    spade: "♠",
 };
 
 export default Object.freeze(suit);

@@ -1,6 +1,7 @@
 import "./App.css";
 
 import Card from "./components/Card";
+import Hand from "./components/Hand";
 import Game from "./game/Game";
 import Player from "./game/Player";
 
@@ -19,7 +20,8 @@ const App = () => {
 
     return (
         <div className="App">
-            <Card rank={4} suit={"Heart"} />
+            <Hand playerNum={1} cards={players[0].hand} />
+            <Hand playerNum={2} cards={players[1].hand} />
         </div>
     );
 };
