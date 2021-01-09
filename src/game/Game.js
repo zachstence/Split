@@ -1,4 +1,4 @@
-import Player from "./Player";
+import { render } from "@testing-library/react";
 import rankEnum from "../enums/rank";
 import suitEnum from "../enums/suit";
 import Card from "./Card";
@@ -7,7 +7,8 @@ class Game {
     deck = null;
     discarded = [];
 
-    constructor() {
+    constructor(render) {
+        this.render = render;
         this.setup();
     }
 
@@ -16,6 +17,7 @@ class Game {
         this.shuffleDeck();
 
         this.discarded.push(this.draw());
+        this.render();
     };
 
     generateDeck = () => {

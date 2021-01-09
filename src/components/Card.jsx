@@ -1,7 +1,5 @@
 import React from "react";
 
-import Card from "../game/Card";
-
 import "./Card.css";
 
 const CardComp = ({ card }) => {

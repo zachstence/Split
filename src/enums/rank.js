@@ -1,4 +1,4 @@
-const rank = {
+const rank = Object.freeze({
     ace: "1",
     two: "2",
     three: "3",
@@ -12,6 +12,6 @@ const rank = {
     jack: "11",
     queen: "12",
     king: "13",
-};
+});
 
-export default Object.freeze(rank);
+export default rank;

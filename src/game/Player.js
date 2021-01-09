@@ -14,12 +14,14 @@ class Player {
     }
 
     draw = () => {
-        this.hand.push(this.game.draw());
+        this.hand = [...this.hand, this.game.draw()];
+        this.game.render();
     };
 
     discard = (i) => {
         const toDiscard = this.hand.splice(i, 1);
         this.game.discard(toDiscard);
+        this.game.render();
     };
 }
 
