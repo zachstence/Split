@@ -7,17 +7,11 @@ class Game {
     deck = null;
     discarded = [];
 
-    constructor(render) {
-        this.render = render;
-        this.setup();
-    }
-
     setup = () => {
         this.generateDeck();
         this.shuffleDeck();
 
         this.discarded.push(this.draw());
-        this.render();
     };
 
     generateDeck = () => {
