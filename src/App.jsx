@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import "./App.css";
 
 import Hand from "./components/Hand";
-import Game from "./game/Game";
-import Player from "./game/Player";
 
 import { setup } from "./redux/actionCreators";
 
@@ -14,7 +12,7 @@ const NUM_PLAYERS = 2;
 const App = ({ players, setup }) => {
     useEffect(() => {
         setup();
-    });
+    }, []);
 
     const renderPlayer = (i) => {
         const player = players[i];
