@@ -42,6 +42,11 @@ export const drawFromDeck = (player) => {
     };
 };
 
-const drawFromDiscarded = (numCards) => {};
+export const drawFromDiscarded = (player, numCards) => {
+    return {
+        type: "DRAW_DISCARDED",
+        payload: { player, numCards },
+    };
+};
 
-const discard = (player, card) => {};
+export const discard = (player, card) => {};

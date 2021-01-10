@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 
-const cards = (cards = {}, action) => {
-    if (action.payload === undefined) return cards;
+const cards = (state = {}, action) => {
+    if (action.payload === undefined) return state;
 
     switch (action.type) {
         case "SETUP": {
@@ -12,8 +12,8 @@ const cards = (cards = {}, action) => {
                 players: players,
             };
         }
-        case "DRAW_DECK":
-            const { deck, players } = cards;
+        case "DRAW_DECK": {
+            const { deck, players } = state;
             const player = action.payload;
 
             const newDeck = [...deck];
@@ -23,12 +23,32 @@ const cards = (cards = {}, action) => {
             newPlayers[player].hand = [...newPlayers[player].hand, toDraw];
 
             return {
-                ...cards,
+                ...state,
                 deck: newDeck,
                 players: newPlayers,
             };
+        }
+        case "DRAW_DISCARDED": {
+            const { discarded, players } = state;
+            const { player, numCards } = action.payload;
+
+            const newDiscarded = [...discarded];
+            const toDraw = newDiscarded.splice(
+                newDiscarded.length - numCards,
+                numCards
+            );
+
+            const newPlayers = [...players];
+            newPlayers[player].hand = [...newPlayers[player].hand, ...toDraw];
+
+            return {
+                ...state,
+                discarded: newDiscarded,
+                players: newPlayers,
+            };
+        }
         default:
-            return cards;
+            return state;
     }
 };
 
