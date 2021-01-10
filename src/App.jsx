@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import "./App.css";
@@ -13,7 +13,7 @@ const NUM_PLAYERS = 4;
 const App = ({ players, setup }) => {
     useEffect(() => {
         setup(NUM_PLAYERS);
-    }, []);
+    }, [setup]);
 
     if (players) {
         return (

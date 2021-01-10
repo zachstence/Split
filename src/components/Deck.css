@@ -7,3 +7,8 @@
 .Deck .draw-pile {
     margin-right: 1em;
 }
+
+.Deck .discard-row {
+    display: flex;
+    flex-direction: row;
+}

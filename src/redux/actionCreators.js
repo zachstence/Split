@@ -49,4 +49,10 @@ export const drawFromDiscarded = (player, numCards) => {
     };
 };
 
-export const discard = (player, card) => {};
+export const discard = (player, cardIndex) => {
+    console.log("discard");
+    return {
+        type: "DISCARD",
+        payload: { player, cardIndex },
+    };
+};

@@ -37,6 +37,7 @@ const cards = (state = {}, action) => {
                 newDiscarded.length - numCards,
                 numCards
             );
+            console.log(numCards, toDraw);
 
             const newPlayers = [...players];
             newPlayers[player].hand = [...newPlayers[player].hand, ...toDraw];
@@ -46,6 +47,19 @@ const cards = (state = {}, action) => {
                 discarded: newDiscarded,
                 players: newPlayers,
             };
+        }
+        case "DISCARD": {
+            const { discarded, players } = state;
+            const { player, cardIndex } = action.payload;
+
+            const newPlayers = [...players];
+            const newHand = [...newPlayers[player].hand];
+            const toDiscard = newHand.splice(cardIndex, 1)[0];
+            newPlayers[player].hand = newHand;
+
+            const newDiscarded = [...discarded, toDiscard];
+
+            return { ...state, discarded: newDiscarded, players: newPlayers };
         }
         default:
             return state;

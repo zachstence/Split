@@ -17,23 +17,15 @@ const Player = ({ index, hand, drawFromDeck, drawFromDiscarded }) => {
             <button type="button" onClick={() => drawFromDiscarded(index, 1)}>
                 Draw 1 From Discard
             </button>
-            <button type="button" onClick={() => drawFromDiscarded(index, 1)}>
+            <button type="button" onClick={() => drawFromDiscarded(index, 2)}>
                 Draw 2 From Discard
             </button>
-            <button type="button" onClick={() => drawFromDiscarded(index, 1)}>
+            <button type="button" onClick={() => drawFromDiscarded(index, 3)}>
                 Draw 3 From Discard
             </button>
-            <button type="button" onClick={() => {}}>
-                Discard
-            </button>
-            <Hand cards={hand} faceUp={true} />
+            <Hand player={index} faceUp={true} />
         </div>
     );
 };
 
-const mapStateToProps = (state, ownProps) => {
-    return { hand: state.cards.players[ownProps.index].hand };
-};
-export default connect(mapStateToProps, { drawFromDeck, drawFromDiscarded })(
-    Player
-);
+export default connect(null, { drawFromDeck, drawFromDiscarded })(Player);
