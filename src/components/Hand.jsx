@@ -8,7 +8,7 @@ const Hand = ({ cards, faceUp }) => {
         return cards.map((card) => {
             return (
                 <Card
-                    key={`${card.rank}${card.suit}`}
+                    key={`${card.rank}${card.suit}${card.id}`}
                     card={card}
                     faceUp={faceUp}
                 />

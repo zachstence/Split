@@ -7,7 +7,6 @@ import { drawFromDeck } from "../redux/actionCreators";
 import "./Player.css";
 
 const Player = ({ index, hand, drawFromDeck }) => {
-    console.log(`rendering player ${index + 1}`);
     return (
         <div className="Player">
             Player {index + 1}
@@ -24,6 +23,6 @@ const Player = ({ index, hand, drawFromDeck }) => {
 };
 
 const mapStateToProps = (state, ownProps) => {
-    return { hand: state.players[ownProps.index].hand };
+    return { hand: state.cards.players[ownProps.index].hand };
 };
 export default connect(mapStateToProps, { drawFromDeck })(Player);

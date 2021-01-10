@@ -1,28 +1,31 @@
 import { combineReducers } from "redux";
 
 const cards = (cards = {}, action) => {
-    if (!action.payload) return cards;
+    if (action.payload === undefined) return cards;
 
-    const { deck, discarded, players } = action.payload;
     switch (action.type) {
-        case "SETUP":
+        case "SETUP": {
+            const { deck, discarded, players } = action.payload;
             return {
                 deck: deck,
                 discarded: discarded,
                 players: players,
             };
+        }
         case "DRAW_DECK":
-            const { player } = action.payload;
+            const { deck, players } = cards;
+            const player = action.payload;
 
             const newDeck = [...deck];
             const toDraw = newDeck.pop();
 
             const newPlayers = [...players];
             newPlayers[player].hand = [...newPlayers[player].hand, toDraw];
+
             return {
+                ...cards,
                 deck: newDeck,
                 players: newPlayers,
-                discarded,
             };
         default:
             return cards;

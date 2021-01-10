@@ -20,7 +20,7 @@ const App = ({ players, setup }) => {
             <div className="App">
                 <Deck />
                 {players.map((p, i) => (
-                    <Player index={i} />
+                    <Player key={i} index={i} />
                 ))}
             </div>
         );
@@ -28,7 +28,7 @@ const App = ({ players, setup }) => {
 };
 
 const mapStateToProps = (state) => {
-    return { players: state.players };
+    return { players: state.cards.players };
 };
 
 export default connect(mapStateToProps, { setup })(App);

@@ -6,8 +6,8 @@ export const setup = (numPlayers) => {
     const deck = [];
     Object.values(rankEnum).forEach((rank) => {
         Object.values(suitEnum).forEach((suit) => {
-            deck.push({ rank, suit });
-            deck.push({ rank, suit });
+            deck.push({ rank, suit, id: 0 });
+            deck.push({ rank, suit, id: 1 });
         });
     });
 
@@ -35,19 +35,11 @@ export const setup = (numPlayers) => {
     };
 };
 
-export const drawFromDeck = (player) => (dispatch, getState) => {
-    const deck = getState().deck;
-    const toDraw = deck[deck.length - 1];
-    dispatch({
+export const drawFromDeck = (player) => {
+    return {
         type: "DRAW_DECK",
-    });
-    dispatch({
-        type: "TAKE_CARDS",
-        payload: {
-            player,
-            cards: [toDraw],
-        },
-    });
+        payload: player,
+    };
 };
 
 const drawFromDiscarded = (numCards) => {};

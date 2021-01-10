@@ -12,7 +12,13 @@ const Deck = ({ discarded }) => {
 
     const renderDiscarded = () => {
         return discarded.map((card) => {
-            return <Card card={card} faceUp={true} />;
+            return (
+                <Card
+                    key={`${card.rank}${card.suit}${card.id}`}
+                    card={card}
+                    faceUp={true}
+                />
+            );
         });
     };
 
@@ -25,7 +31,7 @@ const Deck = ({ discarded }) => {
 };
 
 const mapStateToProps = (state) => {
-    return { discarded: state.discarded };
+    return { discarded: state.cards.discarded };
 };
 
 export default connect(mapStateToProps)(Deck);
