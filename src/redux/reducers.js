@@ -1,48 +1,32 @@
 import { combineReducers } from "redux";
 
-const deck = (deck = [], action) => {
+const cards = (cards = {}, action) => {
+    if (!action.payload) return cards;
+
+    const { deck, discarded, players } = action.payload;
     switch (action.type) {
         case "SETUP":
-            return action.payload.deck;
+            return {
+                deck: deck,
+                discarded: discarded,
+                players: players,
+            };
         case "DRAW_DECK":
+            const { player } = action.payload;
+
             const newDeck = [...deck];
-            newDeck.pop();
-            return newDeck;
+            const toDraw = newDeck.pop();
+
+            const newPlayers = [...players];
+            newPlayers[player].hand = [...newPlayers[player].hand, toDraw];
+            return {
+                deck: newDeck,
+                players: newPlayers,
+                discarded,
+            };
         default:
-            return deck;
+            return cards;
     }
 };
 
-const discarded = (discarded = [], action) => {
-    switch (action.type) {
-        case "SETUP":
-            return action.payload.discarded;
-        case "DISCARD":
-            return [...discarded, action.payload];
-        case "DRAW_DISCARDED":
-            return discarded.splice(
-                discarded.length - action.payload.numCards,
-                action.payload.numCards
-            );
-        default:
-            return discarded;
-    }
-};
-
-const players = (players = [], action) => {
-    switch (action.type) {
-        case "SETUP":
-            return action.payload.players;
-        case "TAKE_CARDS":
-            const playersCopy = [...players];
-            playersCopy[action.payload.player].hand = [
-                ...playersCopy[action.payload.player].hand,
-                ...action.payload.cards,
-            ];
-            return playersCopy;
-        default:
-            return players;
-    }
-};
-
-export default combineReducers({ deck, discarded, players });
+export default combineReducers({ cards });
